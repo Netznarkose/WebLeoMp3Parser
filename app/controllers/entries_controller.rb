@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
   require 'leo_mp3_parser'
+  before_action :authorize
   before_action :set_entry, only: [:destroy]
 
   def index
