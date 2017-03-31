@@ -5,12 +5,12 @@ describe 'users management' do
 
   describe 'authentication' do
     it 'successfull login' do
-      login user
+      login_feature user
       expect(page).to have_content("Logged in!")
     end
 
     it 'successfull logout' do
-      login user
+      login_feature user
       click_link('Log Out')
       expect(page).to have_content("Logged out!")
     end
