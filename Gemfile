@@ -10,6 +10,7 @@ gem 'jbuilder',     '2.2.3'
 gem 'sdoc',         '0.4.0', group: :doc
 gem 'bootstrap-sass',       '3.2.0.0'
 gem 'bcrypt-ruby', '3.1.2'
+gem 'leo_mp3_parser'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'

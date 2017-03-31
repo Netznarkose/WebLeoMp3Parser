@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
 
-  get 'welcome/new'
-
   resources :users
+  resources :entries, only: [:index, :create, :destroy]
+  get 'entries/remove_all'
+  get 'attachments/download'
   resources :sessions
-  root 'welcome#new'
+  root 'entries#index'
 end
