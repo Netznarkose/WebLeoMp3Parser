@@ -1,5 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Entry, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#for_user' do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:own_entry) { FactoryGirl.create(:entry, user_id: user.id) }
+    let(:other_users_entry) { FactoryGirl.create(:entry, user_id: user.id + 1) }
+    before do
+      own_entry
+      other_users_entry
+    end
+    it 'scopes own entries' do
+      Entry.for_user(user).tap do |entry|
+        expect(entry).to include(own_entry)
+        expect(entry).not_to include(other_users_entry)
+      end
+    end
+  end
 end

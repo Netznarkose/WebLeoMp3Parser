@@ -4,10 +4,10 @@ class EntriesController < ApplicationController
   before_action :set_entry, only: [:destroy]
 
   def index
-    @entries = Entry.all
-    @entry = Entry.new
-    @last_entry_language = Entry.all.last.language rescue 'ende'
-    @languages_manual = { 'ende' => 'English', 'esde' => 'Spanish', 'frde' => 'French' }
+    @entries = Entry.for_user(current_user)
+    # @entry = Entry.new
+    # @last_entry_language = Entry.all.last.language rescue 'ende'
+    # @languages_manual = { 'ende' => 'English', 'esde' => 'Spanish', 'frde' => 'French' }
   end
 
   def create
