@@ -7,6 +7,10 @@ RSpec.describe EntriesController, type: :routing do
       expect(:get => "/entries").to route_to("entries#index")
     end
 
+    it "routes to #new" do
+      expect(:get => "/entries/new").to route_to("entries#new")
+    end
+
     it "routes to #create" do
       expect(:post => "/entries").to route_to("entries#create")
     end

@@ -8,15 +8,17 @@ class EntriesController < ApplicationController
     @entries = Entry.for_user(current_user)
   end
 
+  def new
+  end
 
   def create
     @entry = Entry.new(entry_params)
     @entry.user_id = current_user.id
-    @entry.url = generate_url
+    @entry.url = generate_url rescue nil
     if @entry.save
       redirect_to entries_path, notice: 'Entry was successfully created.'
     else
-      render :index
+      render 'new'
     end
   end
 

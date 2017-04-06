@@ -17,13 +17,21 @@ RSpec.describe EntriesController, type: :controller do
   end
 
   describe "POST #create" do
-    it 'creates a new entry' do
-      expect {
-        post :create, entry: FactoryGirl.attributes_for(:entry)
-      }.to change(Entry, :count).by(1)
+    context 'happy path' do
+      it 'creates a new entry' do
+        expect {
+          post :create, entry: FactoryGirl.attributes_for(:entry)
+        }.to change(Entry, :count).by(1)
+      end
+    end
+    context 'unhappy path' do
+      it 're-directs to index and shows an error-message' do
+        expect {
+          post :create, entry: FactoryGirl.attributes_for(:entry, term: nil)
+        }.to change(Entry, :count).by(0)
+      end
     end
   end
-
 
   describe "DELETE #destroy" do
     before do
