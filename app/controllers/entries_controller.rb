@@ -2,7 +2,7 @@ class EntriesController < ApplicationController
   require 'leo_mp3_parser'
   before_action :authorize
   before_action :set_entry, only: [:destroy]
-  helper_method :languages, :last_selected_language
+  helper_method :languages_as_nested_arrays, :last_selected_language
 
   def index
     @entries = Entry.for_user(current_user)
@@ -56,7 +56,16 @@ class EntriesController < ApplicationController
     }
   end
 
+  def languages_as_nested_arrays
+    languages.map { |key, _value| simple_format(languages, key) }
+  end
+
   def last_selected_language
-    @last_selected_language ||= Entry.all.last.language rescue 'ende'
+    last_key ||= Entry.all.last.language rescue 'ende'
+    simple_format(languages, last_key)
+  end
+
+  def simple_format(hash, key)
+    [hash[key], key]
   end
 end

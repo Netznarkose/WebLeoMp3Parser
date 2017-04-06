@@ -1,4 +1,4 @@
-<%= form_for(@entry ||= Entry.new) do |f| %>
+<%= simple_form_for(@entry ||= Entry.new) do |f| %>
   <% if @entry.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
@@ -11,12 +11,13 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.label :language %><br>
-    <%= f.select(:language, options_for_select(languages.map { |key, value| ["#{value}", "#{key}"] }, selected: [languages[last_selected_language], last_selected_language])) %><br>
-    <%= f.label :term %><br>
-    <%= f.text_field :term %><br>
-    <%= f.submit %> 
+    <div class="col-sm-12 col-md-10">
+      <div class="well">
+        <%= f.input(:language, collection: languages_as_nested_arrays, selected: last_selected_language) %>
+      <%= f.input(:term) %>
+      <%= f.submit class: 'btn btn-primary' %>
+      </div>
+    </div>
   </div>
 <% end %>
 
