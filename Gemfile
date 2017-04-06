@@ -12,6 +12,12 @@ gem 'bootstrap-sass',       '3.2.0.0'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'leo_mp3_parser'
 
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
+gem 'simple_form'
+gem 'eikes_scaffolding'
+
 group :development, :test do
   gem 'sqlite3',     '1.3.9'
   gem 'byebug',      '3.4.0'
@@ -27,6 +33,7 @@ end
 group :test do
   gem 'capybara'
   gem 'launchy'
+  gem 'fabrication'
 end
 
 group :production do
