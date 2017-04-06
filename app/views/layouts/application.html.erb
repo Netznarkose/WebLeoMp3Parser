@@ -48,8 +48,19 @@
         <a class="navbar-brand" href="#">WebLeoMp3Parser</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "New Entry", new_entry_path %></li>
-            <li><%= link_to "All Entries", entries_path %></li>
+            <% if current_page?(entries_path) %>
+              <li><%= link_to "New Entry", new_entry_path %></li>
+            <% else %>
+              <li><%= link_to "All Entries", entries_path %></li>
+            <% end %>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user %>
+              <li><%= link_to 'Log Out', log_out_path %></li>
+            <% else %>
+              <li><%= link_to 'Sign Up', sign_up_path %> </li>
+              <li><%= link_to 'Log in', log_in_path %> </li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -64,7 +75,7 @@
       </div><!--/row-->
 
       <footer>
-        <p>&copy; Company 2017</p>
+        <p>&copy; Netznarkose 2017</p>
       </footer>
 
     </div> <!-- /container -->
