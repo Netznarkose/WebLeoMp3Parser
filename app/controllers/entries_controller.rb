@@ -2,7 +2,7 @@ class EntriesController < ApplicationController
   require 'leo_mp3_parser'
   before_action :authorize
   before_action :set_entry, only: [:destroy]
-  helper_method :languages_as_nested_arrays, :last_selected_language
+  helper_method :languages, :languages_simple_form_conversion, :last_selected_language_simple_form_conversion
 
   def index
     @entries = Entry.for_user(current_user)
@@ -15,6 +15,7 @@ class EntriesController < ApplicationController
     @entry = Entry.new(entry_params)
     @entry.user_id = current_user.id
     @entry.url = generate_url rescue nil
+    store_in_session(@entry.language)
     if @entry.save
       redirect_to entries_path, notice: 'Entry was successfully created.'
     else
@@ -56,16 +57,23 @@ class EntriesController < ApplicationController
     }
   end
 
-  def languages_as_nested_arrays
-    languages.map { |key, _value| simple_format(languages, key) }
+  def store_in_session(last_selected_language)
+    session[:last_key] = last_selected_language
   end
 
   def last_selected_language
-    last_key ||= Entry.all.last.language rescue 'ende'
-    simple_format(languages, last_key)
+    @last_selected_language ||= session[:last_key]
   end
 
-  def simple_format(hash, key)
+  def last_selected_language_simple_form_conversion
+    simple_form_conversion(languages, last_selected_language)
+  end
+
+  def languages_simple_form_conversion
+    languages.map { |key, _value| simple_form_conversion(languages, key) }
+  end
+
+  def simple_form_conversion(hash, key)
     [hash[key], key]
   end
 end

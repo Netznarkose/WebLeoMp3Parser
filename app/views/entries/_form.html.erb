@@ -11,13 +11,17 @@
     </div>
   <% end %>
 
-    <div class="col-sm-12 col-md-10">
-      <div class="well">
-        <%= f.input(:language, collection: languages_as_nested_arrays, selected: last_selected_language) %>
-      <%= f.input(:term) %>
-      <%= f.submit class: 'btn btn-primary' %>
-      </div>
+  <div class="col-sm-12 col-md-10">
+    <div class="well">
+      <%= f.input(
+        :language, 
+        collection: languages_simple_form_conversion, 
+        selected: last_selected_language_simple_form_conversion
+      ) %>
+    <%= f.input(:term) %>
+    <%= f.submit class: 'btn btn-primary' %>
     </div>
+  </div>
   </div>
 <% end %>
 
