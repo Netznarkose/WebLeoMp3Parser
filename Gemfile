@@ -18,6 +18,8 @@ gem 'twitter-bootstrap-rails'
 gem 'simple_form'
 gem 'eikes_scaffolding'
 
+gem 'clipboard-rails'
+
 group :development, :test do
   gem 'sqlite3',     '1.3.9'
   gem 'byebug',      '3.4.0'

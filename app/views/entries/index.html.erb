@@ -1,4 +1,4 @@
-<h1>Listing Enries</h1>
+<h1>Listing Entries</h1>
 
 <table class="table">
   <thead>
@@ -6,6 +6,7 @@
       <th>Term</th>
       <th>Language</th>
       <th>Url</th>
+      <th>Url to Clipboard</th>
       <th>Download</th>
       <th>Delete</th>
     </tr>
@@ -17,6 +18,7 @@
         <td><%= entry.term %></td>
         <td><%= languages[entry.language] %></td>
         <td><%= entry.url %></td>
+        <td><button class="clipboard-btn btn btn-primary" data-clipboard-text=<%= entry.url %>>Copy</button></td>
         <td><%= link_to 'Download', attachments_download_path(:entry_url => entry.url, :term => entry.term) %></td>
         <td><%= link_to 'Delete', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
