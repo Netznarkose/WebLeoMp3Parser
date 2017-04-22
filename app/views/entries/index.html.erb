@@ -19,9 +19,10 @@
         <td><%= languages[entry.language] %></td>
         <td><%= entry.url %></td>
         <td><button class="clipboard-btn btn btn-primary" data-clipboard-text=<%= entry.url %>>Copy</button></td>
-        <td><%= link_to 'Download', attachments_download_path(:entry_url => entry.url, :term => entry.term) %></td>
-        <td><%= link_to 'Delete', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Download', attachments_download_path(entry_url: entry.url, term: entry.term), class: "btn btn-primary" %></td>
+        <td><%= button_to 'Delete', entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
       </tr>
     <% end %>
+    <td><%= button_to 'Delete All Entries', entries_remove_all_path, method: :get, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
   </tbody>
 </table>

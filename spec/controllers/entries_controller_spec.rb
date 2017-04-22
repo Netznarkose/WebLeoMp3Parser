@@ -43,4 +43,15 @@ RSpec.describe EntriesController, type: :controller do
       }.to change(Entry, :count).by(-1)
     end
   end
+  describe "#remove_all" do
+    before do
+      3.times { FactoryGirl.create(:entry, user_id: user.id) }
+      2.times { FactoryGirl.create(:entry, user_id: user.id + 1) }
+    end
+    it 'deletes all entries of current user' do
+      expect {
+        get :remove_all
+      }.to change(Entry, :count).by(-3)
+    end
+  end
 end

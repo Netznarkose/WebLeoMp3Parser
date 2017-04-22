@@ -30,7 +30,7 @@ class EntriesController < ApplicationController
   end
 
   def remove_all
-    Entry.delete_all
+    Entry.for_user(current_user).delete_all
     redirect_to entries_url, notice: "You have removed all entries!"
   end
 
