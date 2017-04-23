@@ -25,9 +25,14 @@ RSpec.describe EntriesController, type: :controller do
       end
     end
     context 'unhappy path' do
-      it 're-directs to index and shows an error-message' do
+      it 'does not create an entry when term is empty' do
         expect {
           post :create, entry: FactoryGirl.attributes_for(:entry, term: nil)
+        }.to change(Entry, :count).by(0)
+      end
+      it 'does not create an entry when url could not be found' do
+        expect {
+          post :create, entry: FactoryGirl.attributes_for(:entry, term: '23409sdlfkj', url: nil)
         }.to change(Entry, :count).by(0)
       end
     end
