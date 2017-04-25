@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   get 'entries/remove_all'
   get 'attachments/download'
   resources :sessions
-  root 'entries#index'
+  root 'sessions#new'
 end
