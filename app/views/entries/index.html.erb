@@ -6,7 +6,8 @@
       <th>Term</th>
       <th>Language</th>
       <th>Url</th>
-      <th>Url to Clipboard</th>
+      <th>Clipboard</th>
+      <th>Listen</th>
       <th>Download</th>
       <th>Delete</th>
     </tr>
@@ -19,6 +20,7 @@
         <td><%= languages[entry.language] %></td>
         <td><%= entry.url %></td>
         <td><button class="clipboard-btn btn btn-primary" data-clipboard-text=<%= entry.url %>>Copy</button></td>
+        <td><%= link_to "Listen", entry.url, target: :_blank, class: "btn btn-primary"%></td>
         <td><%= link_to 'Download', attachments_download_path(entry_url: entry.url, term: entry.term), class: "btn btn-primary" %></td>
         <td><%= button_to 'Delete', entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
       </tr>
