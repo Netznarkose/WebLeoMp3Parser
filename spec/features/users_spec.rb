@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'users management' do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { create(:user) }
 
   describe 'authentication' do
     it 'successfull login' do

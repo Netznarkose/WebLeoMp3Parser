@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :entry do
     term 'money'
     language 'ende'

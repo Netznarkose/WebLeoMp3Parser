@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Entry, type: :model do
   describe '#for_user' do
-    let(:user) { FactoryGirl.create(:user) }
-    let(:own_entry) { FactoryGirl.create(:entry, user_id: user.id) }
-    let(:other_users_entry) { FactoryGirl.create(:entry, user_id: user.id + 1) }
+    let(:user) { create(:user) }
+    let(:own_entry) { create(:entry, user_id: user.id) }
+    let(:other_users_entry) { create(:entry, user_id: user.id + 1) }
     before do
       own_entry
       other_users_entry
