@@ -12,6 +12,7 @@ gem 'sdoc', group: :doc
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
 gem 'leo_mp3_parser'
+gem 'leo_mp3_parser', git: 'git@github.com:Netznarkose/LeoMp3Parser.git', branch: 'master'
 
 gem 'therubyracer'
 gem 'less-rails'
