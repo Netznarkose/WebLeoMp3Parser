@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:Netznarkose/LeoMp3Parser.git
+  revision: 26c6d5098bcf5aa1e4be3510303c176c862cece5
+  branch: master
+  specs:
+    leo_mp3_parser (0.0.09)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -93,7 +100,6 @@ GEM
       thor (>= 0.14, < 2.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    leo_mp3_parser (0.0.09)
     less (2.6.0)
       commonjs (~> 0.2.7)
     less-rails (3.0.0)
@@ -244,7 +250,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   launchy
-  leo_mp3_parser
+  leo_mp3_parser!
   less-rails
   pg
   pry-byebug
@@ -264,4 +270,4 @@ DEPENDENCIES
   uglifier
 
 BUNDLED WITH
-   1.16.2
+   1.17.3
