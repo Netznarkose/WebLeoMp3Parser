@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.2'
+gem 'rails', '~> 6.0'
 gem 'sass-rails'
 gem 'sprockets'
 gem 'uglifier'
