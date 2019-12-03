@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:Netznarkose/LeoMp3Parser.git
-  revision: ff30f4f11e628884716a5faed16ecabe882a0160
+  revision: 89817d064eb6f4f59f791ea6f0eb1c48b0648795
   branch: master
   specs:
     leo_mp3_parser (0.0.09)
