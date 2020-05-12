@@ -1,24 +1,19 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '~> 4.2'
-gem 'sass-rails'
-gem 'sprockets'
-gem 'uglifier'
-gem 'coffee-rails'
-gem 'jquery-rails'
-gem 'turbolinks'
-gem 'jbuilder'
-gem 'sdoc', group: :doc
-gem 'bootstrap-sass'
-gem 'bcrypt-ruby'
+ruby '2.7.0'
+
+# Native rails-6 gems
+gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
+gem 'puma', '~> 4.1'
+gem 'sass-rails', '>= 6'
+gem 'webpacker', '~> 4.0'
+gem 'turbolinks', '~> 5'
+gem 'jbuilder', '~> 2.7'
+
+# My Gems
 gem 'leo_mp3_parser', git: 'git@github.com:Netznarkose/LeoMp3Parser.git', branch: 'master'
-
-gem 'therubyracer'
-gem 'less-rails'
-gem 'twitter-bootstrap-rails'
 gem 'simple_form'
-gem 'eikes_scaffolding'
-
 gem 'clipboard-rails'
 
 group :development, :test do
