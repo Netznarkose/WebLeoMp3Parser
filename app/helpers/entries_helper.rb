@@ -26,4 +26,8 @@ module EntriesHelper
   def simple_form_conversion(hash, key)
     [hash[key], key]
   end
+
+  def app_date
+    @app_date ||= Date.today.year
+  end
 end
