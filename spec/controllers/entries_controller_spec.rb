@@ -20,19 +20,19 @@ RSpec.describe EntriesController, type: :controller do
     context 'happy path' do
       it 'creates a new entry' do
         expect {
-          post :create, entry: attributes_for(:entry)
+          post :create, params: { entry: attributes_for(:entry) }
         }.to change(Entry, :count).by(1)
       end
     end
     context 'unhappy path' do
       it 'does not create an entry when term is empty' do
         expect {
-          post :create, entry: attributes_for(:entry, term: nil)
+          post :create, params: { entry: attributes_for(:entry, term: nil) }
         }.to change(Entry, :count).by(0)
       end
       it 'does not create an entry when url could not be found' do
         expect {
-          post :create, entry: attributes_for(:entry, term: '23409sdlfkj', url: nil)
+          post :create, params: { entry: attributes_for(:entry, term: '23409sdlfkj', url: nil) }
         }.to change(Entry, :count).by(0)
       end
     end
@@ -44,7 +44,7 @@ RSpec.describe EntriesController, type: :controller do
     end
     it 'deletes an entry' do
       expect {
-        delete :destroy, id: entry.id
+        delete :destroy, params: { id: entry.id }
       }.to change(Entry, :count).by(-1)
     end
   end
