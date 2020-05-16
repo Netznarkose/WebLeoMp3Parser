@@ -4,6 +4,7 @@ RSpec.describe EntriesController, type: :controller do
 
   let(:entry) { create(:entry) }
   let(:user) { create(:user) }
+  let(:other_user) { create(:user) }
 
   before do
     login user
@@ -51,7 +52,7 @@ RSpec.describe EntriesController, type: :controller do
   describe "#remove_all" do
     before do
       3.times { create(:entry, user_id: user.id) }
-      2.times { create(:entry, user_id: user.id + 1) }
+      2.times { create(:entry, user_id: other_user.id ) }
     end
     it 'deletes all entries of current user' do
       expect {
