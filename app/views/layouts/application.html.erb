@@ -7,29 +7,9 @@
     <title><%= content_for?(:title) ? yield(:title) : "WebLeoMp3Parser" %></title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-    <!-- For third-generation iPad with high-resolution Retina display: -->
-    <!-- Size should be 144 x 144 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
-
-    <!-- For iPhone with high-resolution Retina display: -->
-    <!-- Size should be 114 x 114 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
-
-    <!-- For first- and second-generation iPad: -->
-    <!-- Size should be 72 x 72 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
-
-    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-    <!-- Size should be 57 x 57 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
-
-    <!-- For all other devices -->
-    <!-- Size should be 32 x 32 pixels -->
-    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-
-    <%= javascript_include_tag "application" %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -38,46 +18,52 @@
   </head>
   <body>
 
-    <div class="navbar navbar-default navbar-static-top">
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
         <a class="navbar-brand" <%= link_to 'WebLeoMp3Parser', entries_path %></a>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
             <% if current_user %>
-              <% if current_page?(entries_path) %>
-                <li><%= link_to "New Entry", new_entry_path %></li>
-              <% else %>
-                <li><%= link_to "All Entries", entries_path %></li>
-              <% end %>
+              <li class="nav-item active">
+                <a class="nav-link" <%= current_page?(entries_path) ? (link_to "New Entry", new_entry_path) : (link_to "All Entries", entries_path) %><span class="sr-only">(current)</span></a>
+              </li>
             <% end %>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
-              <li><%= link_to 'Log Out', log_out_path %></li>
+              <li class="nav-item">
+                <a class="nav-link" <%= link_to 'Log Out', log_out_path %></a>
+              </li>
             <% else %>
-              <li><%= link_to 'Sign Up', sign_up_path %> </li>
-              <li><%= link_to 'Log in', log_in_path %> </li>
+              <li class="nav-item">
+                <a class="nav-link" <%= link_to 'Sign Up', sign_up_path %></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" <%= link_to 'Log in', log_in_path %></a>
+              </li>
             <% end %>
-          </ul>
         </div>
       </div>
-    </div>
+    </nav>
 
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <%= bootstrap_flash %>
+          <% flash.each do |_key, value| %>
+            <div class="alert alert-info" role="alert">
+              <%= value %>
+            </div>
+          <% end %>
           <%= yield %>
         </div>
       </div><!--/row-->
 
       <footer>
-        <p>&copy; Netznarkose 2017</p>
+        <p>&copy; Netznarkose <%= app_date %></p>
       </footer>
 
     </div> <!-- /container -->
