@@ -12,7 +12,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 
 # My Gems
-gem 'leo_mp3_parser', git: 'git@github.com:Netznarkose/LeoMp3Parser.git', branch: 'master'
+gem 'leo_mp3_parser'
 gem 'simple_form'
 gem 'bcrypt-ruby'
 gem 'clipboard-rails'
